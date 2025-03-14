@@ -1,15 +1,16 @@
-from sqlalchemy import Column, DateTime, Float, Intrger
-from sqlalchemy.sql import func
+from sqlalchemy import Column, Integer, Float, DateTime
+from sqlalchemy.ext.declarative import declarative_base
+from datetime import datetime
 
-from database import Base
+Base = declarative_base()
 
 
 class Roll(Base):
     """Модель рулона металла"""
-    __tablename__ = 'rolls'
+    __tablename__ = "rolls"
 
-    id = Column(Intrger, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
     length = Column(Float, nullable=False)
     weight = Column(Float, nullable=False)
-    data_add = Column(DateTime(timezone=True), default=func.now())
-    data_del = Column(DateTime(timezone=True), nullable=True)
+    date_added = Column(DateTime, default=datetime.utcnow)
+    date_removed = Column(DateTime, nullable=True)

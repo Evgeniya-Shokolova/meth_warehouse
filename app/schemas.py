@@ -1,22 +1,23 @@
+from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
 
-
-class RollCreate(BaseModel):
+class RollBase(BaseModel):
     """Схема создания рулона"""
     length: float
     weight: float
 
 
-class Roll(BaseModel):
+class RollCreate(RollBase):
+    pass
+
+
+class Roll(RollBase):
     """Схема рулона, API"""
     id: int
-    length: float
-    weight: float
-    data_add: datetime
-    data_del: Optional[datetime]
+    date_added: datetime
+    date_removed: Optional[datetime]
 
     class Config:
         orm_mode = True
