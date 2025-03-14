@@ -94,13 +94,7 @@ sudo systemctl status docker
 
 Docker должен быть запущен. Открываем терминал, переходим в соответсвующую директорию backend/, frontend/, nginx/ проекта Meth_Warehouse и выполняем сборку образа:
 ```bash
-docker build -t rools_backend . 
-```
-```bash
-docker build -t rools_frontend .
-```
-```bash
-docker build -t rools_nginx .
+docker build -t rools . 
 ```
 Выполняем команду аутентификации:
 ```bash
@@ -108,21 +102,14 @@ docker login
 ```
 Пушим образы на Docker Hub:
 ```bash
-docker push username/rools_backend:latest
-```
-```bash
-docker push username/rools_frontend:latest 
+docker push username/rolls:latest
 ```
 
 ### Загрузка образов на Docker Hub
 Собираем образы:
 ```bash
-docker build -t username/rools_backend:latest backend/
+docker build -t username/rolls:latest
 ```
-```bash
-docker build -t username/rools_frontend:latest frontend/
-```
-
 
 ## Сохраняем, коммитим и пушим изменения на GitHub
 ```bash
