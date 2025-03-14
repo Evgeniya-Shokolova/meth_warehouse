@@ -61,12 +61,15 @@ def statistics(start_date: datetime,
                                      start_date=start_date,
                                      end_date=end_date)
 
-    statistics_data["removed_rolls"] = db.query(Roll).filter(
-        Roll.date_removed.between(start_date, end_date)).count()
+    statistics_data["removed_rolls"] = (
+        db.query(Roll).filter(Roll.date_removed.between(start_date, end_date))
+        .count()
+    )
 
-    rolls = db.query(Roll).filter(
-        Roll.date_added.between(start_date, end_date)
-    ).all()
+    rolls = (
+        db.query(Roll).filter(Roll.date_added.between(start_date, end_date))
+        .all()
+    )
 
     if rolls:
         lengths = [roll.length for roll in rolls]
