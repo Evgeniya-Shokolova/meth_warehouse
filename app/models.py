@@ -1,9 +1,6 @@
 from datetime import datetime
-
+from app.database import Base, engine
 from sqlalchemy import Column, DateTime, Float, Integer
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
 
 
 class Roll(Base):
@@ -15,3 +12,6 @@ class Roll(Base):
     weight = Column(Float, nullable=False)
     date_added = Column(DateTime, default=datetime.utcnow)
     date_removed = Column(DateTime, nullable=True)
+
+
+Base.metadata.create_all(bind=engine)

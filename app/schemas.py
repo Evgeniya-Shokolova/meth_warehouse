@@ -1,13 +1,13 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, condecimal
 
 
 class RollBase(BaseModel):
     """Схема создания рулона"""
-    length: float
-    weight: float
+    length: condecimal(ge=0)
+    weight: condecimal(ge=0)
 
 
 class RollCreate(RollBase):
